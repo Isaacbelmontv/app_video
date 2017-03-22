@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <title>Artistas</title>
+		<link rel="stylesheet" href="style.css">	
+        <script type="text/javascript" src="cordova.js"></script>
+
+        <script>     	
+        	window.onload = function(){
+        	init();
+        	}
+        	function init(){
+        	GuardarInformacion();
+        	MostrarInformacion();
+        	}
+        	function GuardarInformacion(){
+        	localStorage.setItem("Cartel de santa","Leve");
+			localStorage.setItem("Eminem","Lose Yourself");
+			localStorage.setItem("50 Cent","Window Shopper");
+			alert("Los artistas y las canciones han sido agregados");
+		    }
+		    function MostrarInformacion(){
+		    var text ="";
+		    for (var c = 0; c < 3 ; c++) {
+		     		var artista = localStorage.key(c);
+		     		text+="<p>";
+                	text+="<button name=\""+ c +"\"  onclick=\"videosArtista("+ c +")\">"
+               	 	text+= artista;
+                	text+="</button>"
+                	text+="</p>";
+		     	}
+		     	document.getElementById("canciones").innerHTML = text;
+		     }
+			//acaba ciclo for
+		     function videosArtista(c){
+		     	var cancion = localStorage.getItem(localStorage.key(c));
+		     	var artista = localStorage.key(c);
+		     	var element = artista;
+				alert(cancion, null, element,'ok');
+		     }
+    </script>
+    </head>
+    <body>
+    	<h1> Artistas </h1>
+		</br>
+        <h2 id="canciones"> </h2>
+		</br>
+		<img src="gorditobailarin.gif" alt="baile"/>
+    </body>
+</html>
